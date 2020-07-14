@@ -1,0 +1,46 @@
+{
+  "name": "assingment-cheq",
+  "version": "1.0.0",
+  "description": "The Budget API",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "source ./scripts/env/staging.sh && node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "graceful-shutdown-express": "^2.0.1",
+    "jsonschema": "^1.2.6",
+    "libxmljs": "^0.19.7",
+    "lodash": "^4.17.19",
+    "mysql2": "^2.1.0",
+    "path": "^0.12.7",
+    "sequelize": "^6.3.3",
+    "vast-xml": "^1.3.0"
+  },
+  "engines": {
+    "node": "12.16.0",
+    "npm": "6.9.0"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "include": [
+      "**/*.js",
+      "**/**/*.js"
+    ],
+    "exclude": [
+      "**/src/config/env.js",
+      "**/scripts/*",
+      "**/index.js",
+      "**/test/**/**/*.js",
+      "**/router/*.js"
+    ],
+    "cache": true,
+    "all": true
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "staging": {
+    "username": "Chg9hWNC5G",
+    "password": "Jg5rR15uDe",
+    "database": "Chg9hWNC5G",
+    "host": "remotemysql.com",
+    "dialect": "mysql",
+    "quoteIdentifiers": false,
+    "logging": false,
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "acquire": 30000,
+      "idle": 10000
+    }
+  }
+}
