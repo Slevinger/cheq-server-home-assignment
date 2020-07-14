@@ -1,13 +1,9 @@
 const express = require("express");
-
 const app = express();
 const cors = require("cors");
-
 const bodyParser = require("body-parser");
-
 const env = require("./config/env").init();
 const vastsRoutes = require("./modules/vasts/vasts.routes");
-
 const errorHandler = require("./middlewares/errorHandler");
 const notFoundMiddleware = require("./middlewares/notFound");
 

@@ -10,13 +10,15 @@ const vastCreateSchema = {
     vastUrl: {
       type: "string",
       format: "uri",
-      pattern: "^(https?|wss?|ftp)://",
+      name: "uri",
+      pattern:
+        "^(https?|ftp|torrent|image|irc)://(-.)?([^s/?.#-]+.?)+(/[^s]*)?$"
     },
     position: { type: "string" },
     width: { type: "integer", minimum: 100, maximum: 1000 },
-    height: { type: "integer", minimum: 100, maximum: 1000 },
+    height: { type: "integer", minimum: 100, maximum: 1000 }
   },
-  required: ["vastUrl"],
+  required: ["vastUrl"]
 };
 
 module.exports = async (req, res, next) => {
@@ -26,7 +28,7 @@ module.exports = async (req, res, next) => {
     if (valid.errors.length > 0) {
       throw new errors.VastsError({
         message: valid.errors[0].message,
-        statusCode: 400,
+        statusCode: 400
       });
     }
     next();
