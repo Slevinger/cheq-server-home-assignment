@@ -15,13 +15,12 @@ let server;
 
 (async () => {
   try {
-
     app.use(cors());
     app.use(bodyParser.json());
     app.use("/health", (req, res) => {
       const message = {
         version: module.exports.version,
-        message: 'OK',
+        message: "OK"
       };
       res.json(message);
     });
@@ -31,11 +30,11 @@ let server;
     app.use(errorHandler);
     server = app.listen(env.PORT, () => {
       console.info(`Start listening on port ${env.PORT}!`);
-      console.info(`Budget API env: ${env.NODE_ENV}`);
+      console.info(`CHEQ API env: ${env.NODE_ENV}`);
       console.info(`Node version: ${process.version}`);
     });
 
-    process.on("SIGTERM", async function () {
+    process.on("SIGTERM", async function() {
       console.log("SIGTERM signal received. shutting down gracefully");
       server.close(() => {
         console.log("Closed out remaining http connections");
@@ -45,12 +44,12 @@ let server;
     });
     console.log("All required components initialized successfully");
   } catch (error) {
-    console.error("Failed initializing modules components", error );
+    console.error("Failed initializing modules components", error);
     process.exit(1);
   }
 })();
 
 process.on("uncaughtException", e => {
-  console.error( "Unexpected server error", e );
+  console.error("Unexpected server error", e);
   process.exit(1);
 });
