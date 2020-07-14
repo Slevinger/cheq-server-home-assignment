@@ -1,7 +1,7 @@
 {
   "name": "assingment-cheq",
   "version": "1.0.0",
-  "description": "The Budget API",
+  "description": "The CHEQ API",
   "main": "src/index.js",
   "scripts": {
     "start:dev": "source ./scripts/env/staging.sh && node src/index.js",
