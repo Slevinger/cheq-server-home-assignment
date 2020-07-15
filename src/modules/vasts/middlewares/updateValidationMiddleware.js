@@ -1,5 +1,5 @@
 const Validator = require("jsonschema").Validator;
-const errors = require("../../../helpers/errors");
+const { VastsError } = require("../../../helpers/errors");
 const validator = new Validator();
 
 const vastUpdateSchema = {
@@ -35,13 +35,13 @@ module.exports = async (req, res, next) => {
     const { body } = req;
     const valid = await validator.validate(body, vastUpdateSchema);
     if (valid.errors.length > 0) {
-      throw new errors.VastsError({
+      throw new VastsError({
         message: valid.errors[0].message,
         statusCode: 400
       });
     }
     if (Object.keys(body).length <= 1) {
-      throw new errors.VastsError({
+      throw new VastsError({
         message: "at-least one of the optionals is required",
         statusCode: 400
       });

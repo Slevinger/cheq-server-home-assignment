@@ -1,6 +1,5 @@
 const vastsService = require("./vasts.service");
-
-var VAST = require("vast-xml");
+const buildXml = require("../../helpers/buildXml");
 
 module.exports = {
   getVasts: async (req, res, next) => {
@@ -13,37 +12,16 @@ module.exports = {
   },
   getVastsById: async (req, res, next) => {
     try {
-      const vast = new VAST();
       const { ctx: context } = req;
       const { vastId } = context;
-      const result = await vastsService.findVastsById(vastId);
-      if (result) {
-        const ad = vast.attachAd({
-          id: vastId,
-          structure: "inline",
-          AdTitle: "Test Ad Title",
-          AdSystem: { name: "Test Ad Server", version: "2.0" }
-        });
-
-        const { id, width, height, position, vastUrl } = result;
-        var creative = ad.attachCreative("Linear", {
-          AdParameters: "<xml></xml>",
-          Duration: "00:00:30"
-        });
-        creative.attachMediaFile(vastUrl, {
-          id: vastId,
-          type: "application/javascript",
-          width,
-          height,
-          position,
-          maintainAspectRatio: "true",
-          apiFramework: "VPAID"
-        });
+      const vast = await vastsService.findVastsById(vastId);
+      if (vast) {
+        const xml = buildXml(vast);
         res.set("Content-Type", "text/xml");
+        return res.status(200).send(xml);
       }
-      res
-        .status(200)
-        .send(vast.xml({ pretty: true, indent: "  ", newline: "\n" }));
+
+      throw new Error("Did not find vast in DB");
     } catch (err) {
       next(err);
     }
