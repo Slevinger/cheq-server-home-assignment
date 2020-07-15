@@ -10,15 +10,15 @@ module.exports = {
   },
   createdAt: {
     allowNull: false,
-    type: Sequelize.DATE,
+    type: Sequelize.DATE
   },
   updatedAt: {
     allowNull: false,
-    type: Sequelize.DATE,
+    type: Sequelize.DATE
   },
   vastUrl: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: false
   },
   position: {
     type: Sequelize.ENUM,
@@ -28,19 +28,20 @@ module.exports = {
       "top_right",
       "middle_left",
       "middle_right",
+      "middle_middle",
       "bottom_left",
       "bottom_middle",
-      "bottom_right",
+      "bottom_right"
     ],
     allowNull: false,
-    defaultValue: "bottom_right",
+    defaultValue: "bottom_right"
   },
   width: {
     type: Sequelize.INTEGER,
-    len: [100, 1000],
+    len: [100, 1000]
   },
   height: {
     type: Sequelize.INTEGER,
-    len: [100, 1000],
-  },
+    len: [100, 1000]
+  }
 };
