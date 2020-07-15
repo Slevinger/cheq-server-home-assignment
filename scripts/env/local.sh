@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Service vars
-export DB_HOST=locahost
-export DB_PORT=8000
-export DB_PASS=123
-export DB_NAME=shir
-export NODE_ENV=local
+export DB_HOST=127.0.0.1
+export DB_PORT=3306
+export DB_PASS=12345
+export DB_NAME=root
+export PORT=5000
 

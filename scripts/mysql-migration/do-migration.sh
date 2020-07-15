@@ -1,19 +1,19 @@
 #!/bin/bash
-echo "do-migration.sh script"
-echo "Prepare postgres migration config file"
 
-cd scripts/mysql-migration
+echo "Prepare mysql migration config file"
 
 sed "s/<NODE_ENV>/$NODE_ENV/g; \
-      s/<PGUSER>/$PGUSER/g; \
-      s/<PGPASSWORD>/$PGPASSWORD/g; \
+      s/<DB_NAME>/$DB_NAME/g; \
+      s/<DB_PASS>/$DB_PASS/g; \
       s/<PGSSL>/$PGSSL/g; \
       s/<PG_IS_SSL>/$PG_IS_SSL/g; \
-      s,<PGDATABASE>,$PGDATABASE,g; \
-      s,<PGHOST>,$PGHOST,g" \
+      s,<DB_NAME>,$DB_NAME,g; \
+      s,<DB_HOST>,$DB_HOST,g" \
       < ./config/config_template.json > ./config/config.json
 
 echo "creating DB if needed"
+
+pwd
 
 sequelize db:create $$NODE_ENV
 if [ $? -eq 0 ] ;then
@@ -22,9 +22,6 @@ else
     echo "Database already exists"
 fi
 
-#echo "Clearing DB..."
 #sequelize db:migrate:undo:all
 echo "Starting migration"
 sequelize db:migrate
-
-cd ../..
