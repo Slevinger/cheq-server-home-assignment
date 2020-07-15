@@ -10,7 +10,6 @@ const vastCreateSchema = {
     vastUrl: {
       type: "string",
       format: "uri",
-      name: "uri",
       pattern:
         "^(https?|ftp|torrent|image|irc)://(-.)?([^s/?.#-]+.?)+(/[^s]*)?$"
     },

@@ -1,4 +1,4 @@
-const { Vast } = require("../../scripts/mysql-migration/models");
+const { Vast } = require("../../db/models");
 
 const createVast = async vast => Vast.create(vast);
 

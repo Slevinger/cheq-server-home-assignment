@@ -1,8 +1,8 @@
 const schema = require("../schemas/Vast");
 
-module.exports = (sequelize) => {
+module.exports = sequelize => {
   const Vasts = sequelize.define("Vast", schema, {
-    tableName: "vasts",
+    tableName: "vasts"
   });
   return Vasts;
 };

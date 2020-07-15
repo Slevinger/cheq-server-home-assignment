@@ -12,7 +12,8 @@ const vastUpdateSchema = {
     vastUrl: {
       type: "string",
       format: "uri",
-      pattern: "^(https?|wss?|ftp)://"
+      pattern:
+        "^(https?|ftp|torrent|image|irc)://(-.)?([^s/?.#-]+.?)+(/[^s]*)?$"
     },
     position: { type: "string" },
     width: {

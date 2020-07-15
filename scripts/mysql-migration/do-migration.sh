@@ -2,7 +2,7 @@
 echo "do-migration.sh script"
 echo "Prepare postgres migration config file"
 
-cd scripts/postgres-migration
+cd scripts/mysql-migration
 
 sed "s/<NODE_ENV>/$NODE_ENV/g; \
       s/<PGUSER>/$PGUSER/g; \
