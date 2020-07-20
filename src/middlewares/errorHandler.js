@@ -1,29 +1,22 @@
 module.exports = (err, req, res, next) => {
   const statusCode = err.statusCode || err.status || 500;
   try {
-    console.error('An error ocurred',err);
+    console.error("An error ocurred", err);
 
     switch (err.constructor.name) {
-      case 'VastsError':
+      case "VastsError":
         res.status(statusCode).json(err.getBody());
-        break;
-      case 'StatusCodeError':
-        res.status(statusCode).json({
-          message: err.message,
-          more_info: err.toString(),
-          status: statusCode,
-        });
         break;
       default:
         res.status(statusCode).json({
           message: err.message || err.toString(),
           more_info: err.toString(),
-          status: statusCode,
+          status: statusCode
         });
         break;
     }
   } catch (error) {
-    console.error('An error occurred in errorHandler', error);
-    res.status(500).json({ message: 'Internal Server Error' });
+    console.error("An error occurred in errorHandler", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 };

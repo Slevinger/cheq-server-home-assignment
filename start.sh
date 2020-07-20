@@ -11,7 +11,7 @@ if [ $NODE_ENV = local ];then
     echo wating for mysql to spin up
     sleep 20
 else
-    echo very staring
+    echo very staging
 fi
 
 npm install sequelize-cli

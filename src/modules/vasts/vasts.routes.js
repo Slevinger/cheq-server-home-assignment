@@ -7,6 +7,7 @@ const updateValidationMiddleware = require("./middlewares/updateValidationMiddle
 const vastsController = require("./vasts.controller");
 
 vastsRouter.get("/", queryContextExtractor, vastsController.getVastsById);
+
 vastsRouter.get(
   "/fetch_vasts",
   queryContextExtractor,
