@@ -23,12 +23,12 @@ fs.readdirSync(__dirname)
   .forEach(file => {
     let modelDefenition = path.join(__dirname, file);
     let model = require(modelDefenition)(sequelize);
-    db[model.name] = model;
+    models[model.name] = model;
   });
 
 Object.keys(models).forEach(modelName => {
   if (models[modelName].associate) {
-    models[modelName].associate(db);
+    models[modelName].associate(models);
   }
 });
 
