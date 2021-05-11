@@ -20,7 +20,7 @@
     "graceful-shutdown-express": "^2.0.1",
     "jsonschema": "^1.2.6",
     "libxmljs": "^0.19.7",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "mysql2": "^2.1.0",
     "path": "^0.12.7",
     "sequelize": "^6.3.3",
